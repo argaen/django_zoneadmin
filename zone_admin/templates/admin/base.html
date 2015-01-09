@@ -1,0 +1,113 @@
+{% load admin_static %}
+{% load firstof from future %}
+<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+
+    {% block extrastyle %}{% endblock %}
+    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+  </head>
+  {% load i18n %}
+
+  <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+    <!-- Container -->
+    <div id="container" class="container-fluid">
+      {% if not is_popup %}
+        <!-- Header -->
+        <div id="header" class="row">
+            <div id="branding" class="col-md-8 branding">
+              {% block branding %}{% endblock %}
+            </div>
+            {% if user.is_active and user.is_staff %}
+            <div id="user-tools" class="col-md-4">
+              <div class="pull-right">
+                {% block welcome-msg %}
+                    {% trans 'Welcome,' %}
+                    <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+                {% endblock %}
+                {% block userlinks %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                    {% if user.has_usable_password %}
+                    <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                    {% endif %}
+                    <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                {% endblock %}
+              </div>
+            </div>
+            {% endif %}
+            {% block nav-global %}{% endblock %}
+        </div>
+        <!-- END Header -->
+      {% endif %}
+
+
+      <!-- Content -->
+      <div id="content" class="container" style="width:auto;max-width:1170px;">
+        <div id="breadcrumb" class="row">
+          <div class="col-md-12">
+            {% if not is_popup %}
+              {% block breadcrumbs %}
+                <div class="breadcrumb">
+                  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                  {% if title %} &rsaquo; {{ title }}{% endif %}
+                </div>
+              {% endblock %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            {% block messages %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div{% if message.tags %} class="alert alert-{{ message.tags }} .alert-dismissible"{% endif %}>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ message|capfirst }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endblock messages %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-{% block content-col %}8{% endblock %}">
+            {% block pretitle %}{% endblock %}
+            {% block content %}
+              {% block object-tools %}{% endblock %}
+              {{ content }}
+            {% endblock %}
+          </div>
+
+          <div class="col-md-4">
+            {% block sidebar %}{% endblock %}
+          </div>
+
+        </div>
+      </div>
+      <!-- END Content -->
+
+      {% block footer %}{% endblock %}
+    </div>
+    <!-- END Container -->
+
+  </body>
+</html>

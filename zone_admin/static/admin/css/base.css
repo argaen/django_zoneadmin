@@ -1,0 +1,64 @@
+#header {
+  display: flex;
+  align-items: center;
+}
+
+#breadcrumb {
+  padding: 15px 0;
+}
+
+.log-entry {
+  padding: 5px 0;
+}
+
+.model-row {
+  padding: 10px 0;
+}
+
+.model-action {
+  padding: 0px 5px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.table-no-border>thead>tr>th, 
+.table-no-border>tbody>tr>th, 
+.table-no-border>tfoot>tr>th, 
+.table-no-border>thead>tr>td, 
+.table-no-border>tbody>tr>td, 
+.table-no-border>tfoot>tr>td {
+  border-top: none; 
+}
+
+.actions.form-inline {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.form-control {
+  width: auto;
+  display: inline;
+}
+
+.empty-form {
+  display: none;
+}
+
+.form-row {
+  border-bottom: 1px solid #fee;
+  padding: 8px 12px;
+}
+
+.inline-deletelink {
+  float: right;
+}
+
+label {
+  font-weight: normal;
+}
+
+label.required {
+  font-weight: bold;
+}

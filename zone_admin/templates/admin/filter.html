@@ -1,0 +1,7 @@
+{% load i18n %}
+<h4>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h4>
+<ul>
+{% for choice in choices %}
+  <a class="btn btn-sm btn-default {% if choice.selected %} active{% endif %}" href="{{ choice.query_string|iriencode }}">{{ choice.display }}</a>
+{% endfor %}
+</ul>
