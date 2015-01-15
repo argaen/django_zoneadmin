@@ -4,7 +4,7 @@ packages = ['Django', 'django-widget-tweaks', ]
 
 setup(
     name="django_zoneadmin",
-    version="0.1.1",
+    version="0.1.2",
     url="http://github.com/argaen/django_zoneadmin",
     description="Alternative django administration interface with bootstrap",
     author="argaen",

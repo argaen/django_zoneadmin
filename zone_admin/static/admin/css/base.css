@@ -1,3 +1,12 @@
+html, body {
+  background-color: #fff;
+}
+
+body.login {
+  background-color: #fff;
+}
+
+
 #header {
   display: flex;
   align-items: center;
@@ -61,4 +70,81 @@ label {
 
 label.required {
   font-weight: bold;
+}
+
+.clockbox, .calendarbox {
+  padding: 10px;
+  padding-top: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  white-space: normal;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.clockbox ul {
+  list-style: square;
+  padding-left: 15px;
+}
+
+
+.clockbox h2 {
+  font-size: 23px;
+}
+
+.clockbox .calendar-cancel, .calendar .calendar-cancel {
+  float: right;
+}
+
+.calendarnav-previous {
+  float: left;
+}
+
+.calendarnav-next {
+  float: right;
+}
+
+.calendarbox caption {
+  text-align: center;
+}
+
+.calendarbox table th, .calendarbox table td {
+  padding: 5px;
+}
+
+.calendar-shortcuts {
+  padding: 5px 0;
+}
+.calendar-shortcuts a {
+  padding: 0px 5px;
+}
+
+.login #container {
+  max-width: initial;
+}
+
+.login .submit-row {
+  text-align: center;
+  padding-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .dismiss {
+    display: none !important;
+  }
 }
