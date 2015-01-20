@@ -143,6 +143,10 @@ label.required {
   padding-left: 0;
 }
 
+textarea.form-control {
+  width: 100%;
+}
+
 @media screen and (max-width: 767px) {
   .dismiss {
     display: none !important;
