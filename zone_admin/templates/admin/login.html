@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static widget_tweaks %}
+{% load i18n admin_static widget_tweaks admin_utils %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
 
@@ -33,13 +33,13 @@
 <div id="content-main">
   <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
     <div class="form-row form-group">
-      <label for="id_username" class="required">{{ form.username.label }}:</label> {{ form.username|add_class:"form-control" }}
+      {% custom_widget form.username placeholder="Username" autocapitalize="off" autocorrect="off" autofocus="" %}
       {% for e in form.username.errors %}
         <span class="alert-danger">{{ e }}</span>
       {% endfor %}
     </div>
     <div class="form-row form-group">
-      <label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password|add_class:"form-control" }}
+      {% custom_widget form.password placeholder="Password" autocapitalize="off" autocorrect="off" autofocus="" %}
       {% for e in form.password.errors %}
         <span class="alert-danger">{{ e }}</span>
       {% endfor %}
