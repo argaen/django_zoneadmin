@@ -28,8 +28,8 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, ReadOnlyPasswordHashField):
                 return self.render_readonly_widgets(actual_field)
 
-            if isinstance(actual_field.field, SplitDateTimeField):
-                return self.render_date_time_widgets(actual_field)
+            # if isinstance(actual_field.field, SplitDateTimeField):
+            #     return self.render_date_time_widgets(actual_field)
 
             if isinstance(actual_field.field, ModelMultipleChoiceField):
                 return self.render_model_multiple_choice_widgets(actual_field)
@@ -62,8 +62,8 @@ class BootstrapWidgetNode(template.Node):
             values = field.field.widget.decompress(field.value())
         output = get_template('admin/widgets/date_time_widget.html')
         html_output = output.render(Context({
-            'date_widget': date_widget.render('{}_0'.format(field.name), values[0]),
-            'time_widget': time_widget.render('{}_1'.format(field.name), values[1]),
+            'date_widget': date_widget.render('{}_0'.format(field.html_name), values[0]),
+            'time_widget': time_widget.render('{}_1'.format(field.html_name), values[1]),
         }))
         return html_output
 
@@ -73,7 +73,7 @@ class BootstrapWidgetNode(template.Node):
         value = field.value()
         output = get_template('admin/widgets/date_widget.html')
         html_output = output.render(Context({
-            'date_widget': date_widget.render(field.name, value),
+            'date_widget': date_widget.render(field.html_name, value),
         }))
         return html_output
 
@@ -98,7 +98,7 @@ class BootstrapWidgetNode(template.Node):
             widget.attrs['required'] = ''
         output = get_template('admin/widgets/model_select_widget.html')
         html_output = output.render(Context({
-            'model_select_widget': widget.render(field.name, field.value(), attrs={
+            'model_select_widget': widget.render(field.html_name, field.value(), attrs={
                 'id': field.auto_id,
                 'name': field.html_name,
             }),
@@ -126,7 +126,7 @@ class BootstrapWidgetNode(template.Node):
         html_output = output.render(Context({
             'model_select_widget': mark_safe(rendered_output),
             'related_url': related_url,
-            'name': 'add_id_{}'.format(field.name)
+            'name': 'add_id_{}'.format(field.html_name)
         }))
         return html_output
 
@@ -134,7 +134,7 @@ class BootstrapWidgetNode(template.Node):
         widget = field.field.widget
         widget.attrs['id'] = 'id_{}'.format(field.name)
         rendered_output = widget.render(field.name, field.value(), attrs={
-            'id': 'id_{}'.format(field.name),
+            'id': 'id_{}'.format(field.html_name),
             'class': 'form-control-static',
         })
         return rendered_output

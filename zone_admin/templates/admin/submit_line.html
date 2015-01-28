@@ -12,7 +12,7 @@
         {% block object-tools-items %}
           {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
           <a class="btn btn-default" href="{% add_preserved_filters history_url %}"><i class="fa fa-list"></i><span class="dismiss"> {% trans "History" %}</span></a>
-        {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
+          {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
         {% endblock %}
       </div>
 

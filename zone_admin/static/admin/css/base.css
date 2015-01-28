@@ -152,3 +152,7 @@ textarea.form-control {
     display: none !important;
   }
 }
+
+.datepicker, .timepicker {
+  cursor: pointer;
+}

@@ -19,9 +19,14 @@
       &rsaquo; {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
     </div>
   {% endblock %}
+
+
 {% endif %}
 
 {% block content %}<div id="content-main">
+  <div class="row">
+  {% if has_absolute_url %}<div class="pull-right"><a href="{{ absolute_url }}" class="btn btn-default"><i class="fa fa-eye"></i><span class="dismiss"> {% trans "View on site" %}</span></a></div>{% endif%}
+</div>
 
   <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
     <div>
@@ -35,6 +40,7 @@
         </div>
         {{ adminform.form.non_field_errors }}
       {% endif %}
+
 
       {% block field_sets %}
         {% for fieldset in adminform %}
