@@ -78,4 +78,10 @@
     deleteText: "{% trans 'Remove' %}"
   });
 })(django.jQuery);
+$(document).ready(function() {
+  $('div.add-row a').click(function() {
+    $('.datepicker').datetimepicker({ format: 'YYYY-MM-DD' });
+    $('.timepicker').datetimepicker({ format: 'HH:mm' });
+  });
+});
 </script>

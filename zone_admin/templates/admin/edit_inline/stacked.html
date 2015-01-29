@@ -57,4 +57,10 @@
     addText: "{% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}"
   });
 })(django.jQuery);
+$(document).ready(function() {
+  $('div.add-row a').click(function() {
+    $('.datepicker').datetimepicker({ format: 'YYYY-MM-DD' });
+    $('.timepicker').datetimepicker({ format: 'HH:mm' });
+  });
+});
 </script>
