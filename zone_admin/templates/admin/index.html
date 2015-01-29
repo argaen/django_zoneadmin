@@ -28,14 +28,10 @@
                 <div class="col-xs-8" style="text-align: right;">
                   {% if model.add_url %}
                       <span><a href="{{ model.add_url }}" class="model-action addlink"><i class="fa fa-plus"></i> {% trans 'Add' %}</a><span>
-                  {% else %}
-                      <div>&nbsp;</div>
                   {% endif %}
 
                   {% if model.admin_url %}
                       <span><a href="{{ model.admin_url }}" class="model-action changelink"><i class="fa fa-edit"></i> {% trans 'Change' %}</a><span>
-                  {% else %}
-                      <div>&nbsp;</div>
                   {% endif %}
                 </div>
               </div>

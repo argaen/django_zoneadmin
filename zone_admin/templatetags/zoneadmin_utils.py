@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField
 from django.template.loader import get_template
 from django.template import Context
-from django.forms.fields import SplitDateTimeField
+from django.forms.fields import TimeField, SplitDateTimeField
 from django.utils.safestring import mark_safe
 
 register = template.Library()
@@ -28,8 +28,8 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, ReadOnlyPasswordHashField):
                 return self.render_readonly_widgets(actual_field)
 
-            # if isinstance(actual_field.field, SplitDateTimeField):
-            #     return self.render_date_time_widgets(actual_field)
+            if isinstance(actual_field.field, SplitDateTimeField):
+                return self.render_date_time_widgets(actual_field)
 
             if isinstance(actual_field.field, ModelMultipleChoiceField):
                 return self.render_model_multiple_choice_widgets(actual_field)
@@ -39,6 +39,9 @@ class BootstrapWidgetNode(template.Node):
 
             if isinstance(actual_field.field, DateField):
                 return self.render_date_widgets(actual_field)
+
+            if isinstance(actual_field.field, TimeField):
+                return self.render_time_widgets(actual_field)
 
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
@@ -74,6 +77,16 @@ class BootstrapWidgetNode(template.Node):
         output = get_template('admin/widgets/date_widget.html')
         html_output = output.render(Context({
             'date_widget': date_widget.render(field.html_name, value),
+        }))
+        return html_output
+
+    def render_time_widgets(self, field):
+        time_widget = field.field.widget
+        time_widget.attrs['class'] = 'time-field form-control'
+        value = field.value()
+        output = get_template('admin/widgets/time_widget.html')
+        html_output = output.render(Context({
+            'time_widget': time_widget.render(field.html_name, value),
         }))
         return html_output
 
