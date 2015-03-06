@@ -1,6 +1,6 @@
 from setuptools import setup
 
-packages = ['Django', 'django-widget-tweaks', ]
+packages = ['Django']
 
 setup(
     name="django_zoneadmin",
@@ -12,5 +12,5 @@ setup(
     packages=['zone_admin'],
     include_package_data=True,
     keywords=['django', 'admin', 'bootstrap', 'angularjs'],
-    install_requires=['django', 'django-widget-tweaks', ]
+    install_requires=packages
 )

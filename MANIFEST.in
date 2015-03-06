@@ -1,3 +1,4 @@
 include MANIFEST.in
 recursive-include zone_admin/templates *
+recursive-include zone_admin/templatetags *
 recursive-include zone_admin/static *

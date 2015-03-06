@@ -22,6 +22,13 @@
                 </label>
                 <div class="col-sm-10">
                   {{ field.field }}
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="{{ field.field.name }}" class="onoffswitch-checkbox" id="myonoffswitch">
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
                   {% for e in field.field.errors %}
                     <span>{{ e }}</span>
                   {% endfor %}
