@@ -1,7 +1,7 @@
 from django import template
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.urlresolvers import reverse
-from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField
+from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField, BooleanField
 from django.template.loader import get_template
 from django.template import Context
 from django.forms.fields import TimeField, SplitDateTimeField
@@ -43,6 +43,9 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, TimeField):
                 return self.render_time_widgets(actual_field)
 
+            if isinstance(actual_field.field, BooleanField):
+                return self.render_checkbox_widgets(actual_field)
+
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
 
@@ -53,6 +56,15 @@ class BootstrapWidgetNode(template.Node):
             return actual_field.as_widget(attrs=extra_attributes)
         except template.VariableDoesNotExist:
             return ''
+
+    def render_checkbox_widgets(self, field):
+        output = get_template('admin/widgets/checkbox_widget.html')
+        html_output = output.render(Context({
+            'id': field.auto_id,
+            'name': field.name,
+            'value': "checked" if field.value() else "",
+        }))
+        return html_output
 
     def render_date_time_widgets(self, field):
         date_widget = field.field.widget.widgets[0]
