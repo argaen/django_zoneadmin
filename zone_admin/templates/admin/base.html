@@ -10,7 +10,9 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-    {% block extrastyle %}{% endblock %}
+    {% block extrastyle %}
+      <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-tagsinput.css' %}"/>
+    {% endblock %}
     <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
     {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
     <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
@@ -112,6 +114,13 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.js"></script>
         <script src="{% static 'js/custom_utils.js' %}"></script>
+        <script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
+        <script>
+          $("input[data-role='tagsinput']").tagsinput({
+              confirmKeys: [13, 32, 44],
+              tagClass: 'tag label label-default',
+              });
+        </script>
       {% endblock %}
     </div>
     <!-- END Container -->
