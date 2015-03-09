@@ -43,7 +43,7 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, TimeField):
                 return self.render_time_widgets(actual_field)
 
-            if isinstance(actual_field.field, BooleanField):
+            if isinstance(actual_field.field, BooleanField) and not actual_field.is_hidden:
                 return self.render_checkbox_widgets(actual_field)
 
             if hasattr(actual_field.field.widget, 'widgets'):
