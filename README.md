@@ -1,4 +1,4 @@
-# django_zoneadmin
+# Django Zone Admin
 Alternative admin interface for Django using Bootstrap.
 
 ## Installing
@@ -10,7 +10,7 @@ After that, (if you are in DEBUG=False mode) do a `python manage.py collectstati
 
 ## Tag fields
 
-There is a custom widget for tag fields with [bootstrap tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/). In order to use it, in your admin file place the following:
+You can improve the tag field with [bootstrap tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/). In order to use it, in your admin file place the following:
 
     from django.contrib import admin
     from django import forms
@@ -19,19 +19,13 @@ There is a custom widget for tag fields with [bootstrap tagsinput](http://timsch
 
     import models
 
-    class CustomTagWidget(TagWidget):
-        def render(self, name, value, attrs=None):
-            widget = super(CustomTagWidget, self).render(name, value, attrs)
-            return widget
-
-
     class ContentForm(forms.ModelForm):
         class Meta:
             model = models.Content
             widgets = {
-                'tags': CustomTagWidget(attrs={'data-role': 'tagsinput'}),
+                'tags': TagWidget(attrs={'data-role': 'tagsinput'}),
             }
-
+            exclude = []
 
     class ContentAdmin(admin.ModelAdmin):
         form = ContentForm
@@ -51,8 +45,28 @@ This snippet, tells to use the tag widget for the field called **tags** of our *
             widgets = {
                 'tags': forms.TextInput(attrs={'data-role': 'tagsinput'}),
             }
+            exclude = []
 
 
     class ContentAdmin(admin.ModelAdmin):
+        form = ContentForm
 
+
+## TinyMCE editor
+
+If you want to have a textfield with the tinymce editor, do the following (customization of the editor is not posible yet):
+
+
+    from zone_admin.widgets import TinyMCEWidget
+
+    class ContentForm(forms.ModelForm):
+
+        class Meta:
+            model = models.Content
+            widgets = {
+                'description': TinyMCEWidget(),
+            }
+            exclude = []
+
+    class ContentAdmin(admin.ModelAdmin):
         form = ContentForm

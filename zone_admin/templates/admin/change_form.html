@@ -3,6 +3,18 @@
 
 {% block extrahead %}{{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+  <script type="text/javascript">
+    tinymce.init({
+        selector: ".tinymce",
+        plugins: [
+          "advlist autolink lists link image charmap print preview anchor",
+          "searchreplace visualblocks code fullscreen",
+          "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+     });
+  </script>
   {{ media }}
 {% endblock %}
 
@@ -19,8 +31,6 @@
       &rsaquo; {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
     </div>
   {% endblock %}
-
-
 {% endif %}
 
 {% block content %}<div id="content-main">
