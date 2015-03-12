@@ -46,16 +46,21 @@
   <div class="row">
 
     <div class="col-md-{% if cl.has_filters %}8{%else%}12{%endif%}">
-      {% block object-tools %}
-        {% if has_add_permission %}
-          {% block object-tools-items %}
-            {% url cl.opts|admin_urlname:'add' as add_url %}
-            <a class="btn btn-sm btn-default" href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
-              {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-            </a>
+      <div class="row">
+        <div class="col-md-12">
+          {% block content_title %}{% if title %}<h3 style="display: inline-block;">{{ title }}</h3>{% endif %}{% endblock %}
+          {% block object-tools %}
+            {% if has_add_permission %}
+              {% block object-tools-items %}
+                {% url cl.opts|admin_urlname:'add' as add_url %}
+                <a class="btn btn-sm btn-default pull-right" style="margin-top:20px;" href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
+                  {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+                </a>
+              {% endblock %}
+            {% endif %}
           {% endblock %}
-        {% endif %}
-      {% endblock %}
+        </div>
+      </div>
 
       {% if cl.formset.errors %}
         <div class="alert alert-danger alert-dismissable">

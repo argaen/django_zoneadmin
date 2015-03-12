@@ -13,23 +13,23 @@ After that, (if you are in DEBUG=False mode) do a `python manage.py collectstati
 You can improve the tag field with [bootstrap tagsinput](http://timschlechter.github.io/bootstrap-tagsinput/examples/). In order to use it, in your admin file place the following:
 
 ```python
-    from django.contrib import admin
-    from django import forms
+from django.contrib import admin
+from django import forms
 
-    from taggit.forms import TagWidget
+from taggit.forms import TagWidget
 
-    import models
+import models
 
-    class ContentForm(forms.ModelForm):
-        class Meta:
-            model = models.Content
-            widgets = {
-                'tags': TagWidget(attrs={'data-role': 'tagsinput'}),
-            }
-            exclude = []
+class ContentForm(forms.ModelForm):
+    class Meta:
+        model = models.Content
+        widgets = {
+            'tags': TagWidget(attrs={'data-role': 'tagsinput'}),
+        }
+        exclude = []
 
-    class ContentAdmin(admin.ModelAdmin):
-        form = ContentForm
+class ContentAdmin(admin.ModelAdmin):
+    form = ContentForm
 ```
 
 
@@ -38,22 +38,22 @@ This snippet, tells to use the tag widget for the field called **tags** of our *
 
 
 ```python
-    from django.contrib import admin
-    from django import forms
+from django.contrib import admin
+from django import forms
 
-    import models
+import models
 
-    class ContentForm(forms.ModelForm):
-        class Meta:
-            model = models.Content
-            widgets = {
-                'tags': forms.TextInput(attrs={'data-role': 'tagsinput'}),
-            }
-            exclude = []
+class ContentForm(forms.ModelForm):
+    class Meta:
+        model = models.Content
+        widgets = {
+            'tags': forms.TextInput(attrs={'data-role': 'tagsinput'}),
+        }
+        exclude = []
 
 
-    class ContentAdmin(admin.ModelAdmin):
-        form = ContentForm
+class ContentAdmin(admin.ModelAdmin):
+    form = ContentForm
 ```
 
 
@@ -62,17 +62,17 @@ This snippet, tells to use the tag widget for the field called **tags** of our *
 If you want to have a textfield with the tinymce editor, do the following (customization of the editor is not posible yet):
 
 ```python
-    from zone_admin.widgets import TinyMCEWidget
+from zone_admin.widgets import TinyMCEWidget
 
-    class ContentForm(forms.ModelForm):
+class ContentForm(forms.ModelForm):
 
-        class Meta:
-            model = models.Content
-            widgets = {
-                'description': TinyMCEWidget(),
-            }
-            exclude = []
+    class Meta:
+        model = models.Content
+        widgets = {
+            'description': TinyMCEWidget(),
+        }
+        exclude = []
 
-    class ContentAdmin(admin.ModelAdmin):
-        form = ContentForm
+class ContentAdmin(admin.ModelAdmin):
+    form = ContentForm
 ```
