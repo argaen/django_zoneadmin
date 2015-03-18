@@ -59,7 +59,6 @@ class BootstrapWidgetNode(template.Node):
 
     def render_checkbox_widgets(self, field):
         output = get_template('admin/widgets/checkbox_widget.html')
-        print field.html_name
         html_output = output.render(Context({
             'widget': field.field.widget.render('{}_0'.format(field.html_name), field.value()),
             'id': field.auto_id,

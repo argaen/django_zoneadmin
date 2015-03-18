@@ -1,11 +1,11 @@
 # Django Zone Admin
 Alternative admin interface for Django using Bootstrap.
 
-## Installing
+## Installation
 
-Do a `pip install django_zoneadmin`. Once installed, open your settings.py file and place the 'zone\_admin' app *before* the 'django.contrib.admin' app.
+Do a `pip install django_zoneadmin`. Once installed, open your **settings.py** file and place the 'zone\_admin' app **before** the `django.contrib.admin` app.
 
-After that, (if you are in DEBUG=False mode) do a `python manage.py collectstatic` to get the staticfiles and refresh the browser, you should now see that the styling of the admin interface has changed.
+After that, (if you are in `DEBUG=False` mode) do a `python manage.py collectstatic` to get the _staticfiles_ and refresh the browser, you should now see that the styling of the admin interface has changed.
 
 
 ## Tag fields
