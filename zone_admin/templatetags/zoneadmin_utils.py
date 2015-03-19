@@ -249,3 +249,8 @@ def get_app_list(context):
         app['models'].sort(key=lambda x: x['name'])
 
     return app_list
+
+
+@register.filter
+def to_app_model_name(obj):
+    return obj._meta.app_label + '_' + obj._meta.model_name

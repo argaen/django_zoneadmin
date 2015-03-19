@@ -7,6 +7,10 @@ Do a `pip install django_zoneadmin`. Once installed, open your settings.py file 
 
 After that, (if you are in DEBUG=False mode) do a `python manage.py collectstatic` to get the staticfiles and refresh the browser, you should now see that the styling of the admin interface has changed.
 
+You will also need to add the following line into your `TEMPLATE_CONTEXT_PROCESSORS` defined in your **settings.py** file: `django.core.context_processors.request`.
+
+
+
 
 ## Tag fields
 
