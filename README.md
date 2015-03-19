@@ -125,6 +125,9 @@ The default menu contains the following:
 {% endif %}
 ```
 
+> IMPORTANT: Note that if you want your overriden menu to appear in any _subpage_, you should override the block in the `base_site.html` template. If you override it in for example, your `index.html` template, the menu will only apply to templates extending that template (which may not be the desired behaviour).
+> Another important thing to take into account is that, if you build a custom menu disabling some models/apps to be accessed, you are only hiding the urls to the user but **they can still be accessed!**. If you want to disable access to some models or apps, just change the permissions for the needed users/groups.
+
 ### Overriding index page
 
 The index page is left blank on purpose in order to override it. To do so, create an `index.html` template and place there whatever you want. Basically, you will want to override the `content` block which is the one that controls what is shown in the content part (the part besides the menu sidebar).
