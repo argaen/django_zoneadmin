@@ -80,3 +80,51 @@ class ContentForm(forms.ModelForm):
 class ContentAdmin(admin.ModelAdmin):
     form = ContentForm
 ```
+
+
+## Overriding templates
+
+### Block menu
+
+This menu is defined in the `base.html` template. It automatically loads the registered applications and models in the admin (according to the current user permissions). You can override it in any template that inherits from `base.html` by writting the following:
+
+```python
+{% block menu %}
+  My custom menu
+{% endblock menu %}
+```
+
+The default menu contains the following:
+
+```python
+{% load zoneadmin_utils %} # Needed for the get_app_list template tag
+{% if user.is_authenticated %}
+<div id="mainmenu" class="col-sm-3 col-md-2 sidebar" style="padding:0px;">
+  <div class="list-group">
+    {% get_app_list as app_list %}
+    {% for app in app_list %}
+      <a href="#{{ app.name | slugify }}" class="list-group-item" data-toggle="collapse" data-parent="#mainmenu">{{ app.name }}</a>
+      <div class="collapse" id="{{ app.name | slugify }}">
+        {% for model in app.models %}
+        <div class="list-group-item sublist-group-item">
+          <a href="{{ model.admin_url }}">{{ model.name }}</a>
+          <div class="pull-right">
+            {% if model.add_url %}
+            <span><a href="{{ model.add_url }}" title="{% trans 'Add' %}" class="model-action addlink"><i class="fa fa-plus"></i></a><span>
+            {% endif %}
+            {% if model.admin_url %}
+              <span><a href="{{ model.admin_url }}" title="{% trans 'Change' %}" class="model-action changelink"><i class="fa fa-edit"></i></a><span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+```
+
+### Overriding index page
+
+The index page is left blank on purpose in order to override it. To do so, create an `index.html` template and place there whatever you want. Basically, you will want to override the `content` block which is the one that controls what is shown in the content part (the part besides the menu sidebar).

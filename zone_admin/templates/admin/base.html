@@ -63,32 +63,35 @@
 
     <div class="container-fluid" style="max-width:{% block container-width %}inherit{% endblock %};">
       <div class="row">
-        {% if user.is_authenticated %}
-        <div id="mainmenu" class="col-sm-3 col-md-2 sidebar" style="padding:0px;">
-          <div class="list-group panel">
-            {% get_app_list as app_list %}
-            {% for app in app_list %}
-              <a href="#{{ app.name | slugify }}" class="list-group-item" data-toggle="collapse" data-parent="#mainmenu">{{ app.name }}</a>
-              <div class="collapse" id="{{ app.name | slugify }}">
-                {% for model in app.models %}
-                <div class="list-group-item sublist-group-item">
-                  <a href="{{ model.admin_url }}">{{ model.name }}</a>
-                  <div class="pull-right">
-                    {% if model.add_url %}
-                    <span><a href="{{ model.add_url }}" title="{% trans 'Add' %}" class="model-action addlink"><i class="fa fa-plus"></i></a><span>
-                    {% endif %}
-                    {% if model.admin_url %}
-                      <span><a href="{{ model.admin_url }}" title="{% trans 'Change' %}" class="model-action changelink"><i class="fa fa-edit"></i></a><span>
-                    {% endif %}
+
+        {% block menu %}
+          {% if user.is_authenticated %}
+            <div id="mainmenu" class="col-sm-3 col-md-2 sidebar" style="padding:0px;">
+              <div class="list-group">
+                {% get_app_list as app_list %}
+                {% for app in app_list %}
+                  <a href="#{{ app.name | slugify }}" class="list-group-item" data-toggle="collapse" data-parent="#mainmenu">{{ app.name }}</a>
+                  <div class="collapse" id="{{ app.name | slugify }}">
+                    {% for model in app.models %}
+                    <div class="list-group-item sublist-group-item">
+                      <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                      <div class="pull-right">
+                        {% if model.add_url %}
+                        <span><a href="{{ model.add_url }}" title="{% trans 'Add' %}" class="model-action addlink"><i class="fa fa-plus"></i></a><span>
+                        {% endif %}
+                        {% if model.admin_url %}
+                          <span><a href="{{ model.admin_url }}" title="{% trans 'Change' %}" class="model-action changelink"><i class="fa fa-edit"></i></a><span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    {% endfor %}
                   </div>
-                </div>
                 {% endfor %}
               </div>
-            {% endfor %}
-          </div>
-        </div>
+            </div>
+          {% endif %}
+        {% endblock menu %}
 
-        {% endif %}
         <div class="{% if user.is_authenticated %}col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main{%else%}col-sm-12 col-md-12 main{%endif%}">
           <div class="row">
             <div class="col-md-12">
