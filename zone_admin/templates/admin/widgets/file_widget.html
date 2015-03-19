@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<input id="{{id}}" type="file" name="{{name}}" accept="image/*" class="file" {% if image %}accept="image/*"{% endif %} {% if required %}data-show-remove="false"{% endif %} data-show-upload="false" data-show-preview="false">
+<input id="{{id}}" type="file" name="{{name}}" accept="image/*" class="file" {% if image %}accept="image/*"{% endif %} data-show-upload="false" data-show-preview="false">
 <script>
   $("#{{id}}").fileinput({
     mainClass: "col-md-6",
@@ -21,7 +21,7 @@
           "<div class=\'input-group {class}\'>\n" +
           "   {caption}\n" +
           "   <div class=\'input-group-btn\'>\n" +
-              {% if value %}
+              {% if value and not required %}
             "<span class='button-checkbox'>\n" +
               '<button type="button" title="Clear selected files" style="border-radius: 0;" class="btn btn-default">Remove</button>\n' +
   "            <input id='{{name}}-clear_id' name='{{name}}-clear' type='checkbox' class='hidden' />\n" +
