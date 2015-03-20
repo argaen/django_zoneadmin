@@ -2,7 +2,7 @@ from django import template
 from django.conf import settings
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.urlresolvers import reverse, NoReverseMatch
-from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField, BooleanField
+from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField, BooleanField, ImageField, FileField
 from django.template.loader import get_template
 from django.template import Context
 from django.forms.fields import TimeField, SplitDateTimeField

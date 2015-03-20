@@ -14,9 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href={% static "admin/vendor/bootstrap/bootstrap.min.css" %} rel="stylesheet">
     <link href={% static "admin/vendor/fonts/font-awesome.min.css" %} rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-tagsinput.css' %}">
     <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.css">
     {% block extrastyle %}{% endblock %}
 
     <!-- Custom styles for this template -->
@@ -121,6 +119,7 @@
 
       {% block footer %}
         <script src={% static "admin/vendor/bootstrap/bootstrap.min.js" %}></script>
+        <script src={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.js" %}></script>
         <script src={% static "admin/js/custom_utils.js" %}></script>
       {% endblock %}
     </div>

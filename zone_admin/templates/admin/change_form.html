@@ -2,11 +2,11 @@
 {% load i18n admin_urls admin_static admin_modify %}
 
 {% block extrahead %}{{ block.super }}
+  <script src={% static "admin/vendor/moment.js" %}></script>
+  <script src={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.js" %}></script>
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
   <script src={% static "admin/vendor/tinymce/tinymce.min.js" %}></script>
   <script src={% static "admin/vendor/bootstrap/bootstrap-fileinput.min.js" %}></script>
-  <script src={% static "admin/vendor/moment.js" %}></script>
-  <script src={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.js" %}></script>
   <script src={% static "admin/vendor/bootstrap/bootstrap-tagsinput.js" %}></script>
   <script>
     $("input[data-role='tagsinput']").tagsinput({
