@@ -235,3 +235,9 @@ td>input.form-control {
 #mainmenu a.list-group-item:hover {
   color: #23527c;
 }
+
+.btn-default:focus {
+  outline: 0;
+  background-color: inherit;
+  border-color: #ccc;
+}

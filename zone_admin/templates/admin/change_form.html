@@ -3,7 +3,18 @@
 
 {% block extrahead %}{{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-  <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+  <script src={% static "admin/vendor/tinymce/tinymce.min.js" %}></script>
+  <script src={% static "admin/vendor/bootstrap/bootstrap-fileinput.min.js" %}></script>
+  <script src={% static "admin/vendor/moment.js" %}></script>
+  <script src={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.js" %}></script>
+  <script src={% static "admin/vendor/bootstrap/bootstrap-tagsinput.js" %}></script>
+  <script>
+    $("input[data-role='tagsinput']").tagsinput({
+        confirmKeys: [13, 32, 44],
+        tagClass: 'tag label label-default',
+        });
+  </script>
+
   <script type="text/javascript">
     tinymce.init({
         selector: ".tinymce",
@@ -16,6 +27,11 @@
      });
   </script>
   {{ media }}
+{% endblock %}
+{% block extrastyle %}{{ block.super}}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/vendor/bootstrap/bootstrap-fileinput.min.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "admin/vendor/bootstrap/bootstrap-tagsinput.css" %}"/>
+  <link rel="stylesheet" type="text/css" href={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.css" %} />
 {% endblock %}
 
 {% block content-col %}12{% endblock %}

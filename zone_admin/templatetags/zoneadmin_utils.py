@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField, BooleanField
@@ -10,7 +11,6 @@ from django.contrib import admin
 from django.utils import six
 from django.utils.text import capfirst
 from django.apps import apps
-from django.conf import settings
 
 
 register = template.Library()
@@ -52,6 +52,11 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, BooleanField) and not actual_field.is_hidden:
                 return self.render_checkbox_widgets(actual_field)
 
+            if isinstance(actual_field.field, ImageField):
+                return self.render_file_widgets(actual_field, image=True)
+            elif isinstance(actual_field.field, FileField):
+                return self.render_file_widgets(actual_field)
+
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
 
@@ -63,11 +68,21 @@ class BootstrapWidgetNode(template.Node):
         except template.VariableDoesNotExist:
             return ''
 
+    def render_file_widgets(self, field, image=False):
+        output = get_template('admin/widgets/file_widget.html')
+        html_output = output.render(Context({
+            'id': field.auto_id,
+            'name': field.html_name,
+            'value': field.value(),
+            'media': settings.MEDIA_URL,
+            'image': image,
+            'required': field.field.required,
+        }))
+        return html_output
+
     def render_checkbox_widgets(self, field):
         output = get_template('admin/widgets/checkbox_widget.html')
-        print field.html_name
         html_output = output.render(Context({
-            'widget': field.field.widget.render('{}_0'.format(field.html_name), field.value()),
             'id': field.auto_id,
             'name': field.html_name,
             'value': "checked" if field.value() else "",
