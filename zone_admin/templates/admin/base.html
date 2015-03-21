@@ -15,10 +15,10 @@
     <link href={% static "admin/vendor/bootstrap/bootstrap.min.css" %} rel="stylesheet">
     <link href={% static "admin/vendor/fonts/font-awesome.min.css" %} rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
-    {% block extrastyle %}{% endblock %}
 
     <!-- Custom styles for this template -->
     <link href={% static "admin/css/custom-dashboard.css" %} rel="stylesheet">
+    {% block extrastyle %}{% endblock %}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -63,8 +63,8 @@
       </div>
     </nav>
 
-    <div class="container-fluid" style="max-width:{% block container-width %}inherit{% endblock %};">
-      <div class="row">
+    <div class="container-fluid wrapper" style="max-width:{% block container-width %}100%{% endblock %};">
+      <div class="row row-wrapper">
 
         {% block menu %}
           {% if user.is_authenticated %}
@@ -94,21 +94,21 @@
           {% endif %}
         {% endblock menu %}
 
-        <div class="{% if user.is_authenticated %}col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main{%else%}col-sm-12 col-md-12 main{%endif%}">
-          <div class="row">
-            <div class="col-md-12">
-              {% block messages %}
-                {% if messages %}
+        <div class="{% if user.is_authenticated %}col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2{%else%}col-sm-12 col-md-12{%endif%} main content-wrapper">
+          {% block messages %}
+            {% if messages %}
+              <div class="row">
+                <div class="col-md-12">
                   {% for message in messages %}
                     <div{% if message.tags %} class="alert alert-{{ message.tags }} .alert-dismissible"{% endif %}>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       {{ message|capfirst }}
                     </div>
                   {% endfor %}
-                {% endif %}
-              {% endblock messages %}
-            </div>
-          </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endblock messages %}
 
           {% block content %}
           {% endblock content %}
