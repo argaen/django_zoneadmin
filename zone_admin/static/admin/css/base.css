@@ -216,9 +216,6 @@ td>input.form-control {
 #mainmenu>.panel, #mainmenu.sidebar {
   background-color: #fff;
 }
-#mainmenu .sublist-group-item {
-  margin-left: 55px;
-}
 
 #mainmenu .list-group-item {
   border: none;

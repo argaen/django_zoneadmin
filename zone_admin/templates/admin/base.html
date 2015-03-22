@@ -75,7 +75,7 @@
                   <a href="#{{ app.name | slugify }}" class="list-group-item" data-toggle="collapse" data-parent="#mainmenu">{{ app.name }}</a>
                   <div class="collapse" id="{{ app.name | slugify }}">
                     {% for model in app.models %}
-                    <div class="list-group-item sublist-group-item">
+                    <div class="col-md-offset-2 list-group-item sublist-group-item">
                       <a href="{{ model.admin_url }}">{{ model.name }}</a>
                       <div class="pull-right">
                         {% if model.add_url %}

@@ -211,6 +211,14 @@ print settings.TEMPLATE_CONTEXT_PROCESSORS
 
 
 @register.assignment_tag(takes_context=True)
+def get_model(context, model):
+    print admin.site._registry.items()
+    for model, model_admin in admin.site._registry.items():
+        pass
+        # check if model is in list and do the same as in get_app_list
+
+
+@register.assignment_tag(takes_context=True)
 def get_app_list(context):
     app_dict = {}
     request = context['request']
