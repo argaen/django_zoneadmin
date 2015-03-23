@@ -1,0 +1,30 @@
+{% load i18n admin_urls %}
+<div class="row">
+  <div class="col-md-12" style="background-color:#ddd;padding:15px;border-radius:5px;margin-top:30px;">
+
+    <div class="row">
+      <div class="col-sm-4 col-xs-5">
+        {% if show_delete_link %}
+          {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+          <a href="{% add_preserved_filters delete_url %}" class="btn btn-default"><i class="fa fa-remove"></i><span class="dismiss"> {% trans "Delete" %}</span></a>
+        {% endif %}
+
+        {% block object-tools-items %}
+          {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+          <a class="btn btn-default" href="{% add_preserved_filters history_url %}"><i class="fa fa-list"></i><span class="dismiss"> {% trans "History" %}</span></a>
+          {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
+        {% endblock %}
+      </div>
+
+
+      <div class="col-sm-8 col-xs-7" style="text-align:right;">
+        {% if show_save %}<button type="submit" class="btn btn-default" name="_save" ><i class="fa fa-save"></i><span class="dismiss"> {% trans 'Save' %}</span></button>{% endif %}
+        {% if show_save_as_new %}<button type="submit" class="btn btn-default" name="_saveasnew">{% trans 'Save as new' %}</button>{%endif%}
+        {% if show_save_and_add_another %}<button type="submit" class="btn btn-default" name="_addanother"><i class="fa fa-save"></i> <i class="fa fa-plus"></i><span class="dismiss"> {% trans 'Save and add another' %}</span></button>{% endif %}
+        {% if show_save_and_continue %}<button type="submit" class="btn btn-default" name="_continue"><i class="fa fa-save"></i> <i class="fa fa-edit"></i><span class="dismiss"> {% trans 'Save and continue editing' %}</span></button>{% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+<hr>

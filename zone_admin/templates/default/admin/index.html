@@ -1,0 +1,97 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+
+    {% if app_list %}
+      {% for app in app_list %}
+        <div class="app-{{ app.app_label }} module panel panel-default">
+          <div class="panel-heading">
+            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+          </div>
+          <div class="panel-body">
+            {% for model in app.models %}
+              <div class="model-{{ model.object_name|lower }} row model-row">
+                {% if model.admin_url %}
+                  <div scope="row" class="col-xs-4"><a href="{{ model.admin_url }}">{{ model.name }}</a></div>
+                {% else %}
+                    <div scope="row" class="col-xs-4">{{ model.name }}</div>
+                {% endif %}
+
+                <div class="col-xs-8" style="text-align: right;">
+                  {% if model.add_url %}
+                      <span><a href="{{ model.add_url }}" class="model-action addlink"><i class="fa fa-plus"></i> {% trans 'Add' %}</a><span>
+                  {% endif %}
+
+                  {% if model.admin_url %}
+                      <span><a href="{{ model.admin_url }}" class="model-action changelink"><i class="fa fa-edit"></i> {% trans 'Change' %}</a><span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+        <p>{% trans "You don't have permission to edit anything." %}</p>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+  <div id="content-related">
+    <div class="module" id="recent-actions-module">
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <span style="font-weight: bold;">{% trans 'My Actions' %}</span>
+        </div>
+
+        <div class="panel-body">
+          {% load log %}
+          {% get_admin_log 10 as admin_log for_user user %}
+
+          {% if not admin_log %}
+            <p>{% trans 'None available' %}</p>
+          {% else %}
+            <ul class="actionlist">
+
+              {% for entry in admin_log %}
+                <li class="log-entry">
+
+                  <div class="col-md-6">
+                    <i class="fa {% if entry.is_addition %}fa-plus{% endif %}{% if entry.is_change %}fa-edit{% endif %}{% if entry.is_deletion %}fa-remove{% endif %}"></i>
+                    {% if entry.is_deletion or not entry.get_admin_url %}
+                      {{ entry.object_repr }}
+                    {% else %}
+                      <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                    {% endif %}
+                  </div>
+
+                  <div class="col-md-6">
+                    {% if entry.content_type %}
+                      <span class="mini quiet">{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}</span>
+                    {% else %}
+                      <span class="mini quiet">{% trans 'Unknown content' %}</span>
+                    {% endif %}
+                  </div>
+
+                </li>
+              {% endfor %}
+
+            </ul>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

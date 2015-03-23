@@ -1,0 +1,57 @@
+{% load zoneadmin_utils %}
+
+<fieldset class="module aligned {{ fieldset.classes }}">
+  <div class="row">
+    <div class="col-sm-12">
+
+    {% if fieldset.name %}<h3 class="page-header">{{ fieldset.name }}</h3>{% endif %}
+
+    {% if fieldset.description %}
+      <div class="description">{{ fieldset.description|safe }}</div>
+    {% endif %}
+
+    {% for line in fieldset %}
+      <div class="form-row{% if line.fields|length_is:'1' and line.errors %} alert-danger{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+        {% for field in line %}
+          <div class="row">
+            <div class="form-group">
+
+              {% if field.is_checkbox %}
+                <label class="col-sm-2">
+                  {{ field.field.label }}
+                </label>
+                <div class="col-sm-10">
+                  {% custom_widget field.field %}
+                  {% for e in field.field.errors %}
+                    <span>{{ e }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <label class="col-sm-2 {%if field.field.field.required%}required{%endif%}">
+                  {{field.field.label}}
+                  {% if field.field.help_text %}
+                    <a data-toggle="popover" data-placement="bottom" data-trigger="click" data-content="{{ field.field.help_text }}"><i class="fa fa-question-circle"></i></a>
+                  {% endif %}
+                </label>
+                {% if field.is_readonly %}
+                  <p>{{ field.contents }}</p>
+                {% else %}
+                  <div class="col-sm-10">
+                    {% custom_widget field.field %}
+                    {% for e in field.field.errors %}
+                      <span>{{ e }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              {% endif %}
+
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+</fieldset>
