@@ -208,11 +208,34 @@ def custom_widget(parser, token):
 
 
 @register.assignment_tag(takes_context=True)
-def get_model(context, model):
-    # print admin.site._registry.items()
+def get_model(context, app_label, model_name):
+    request = context['request']
     for model, model_admin in admin.site._registry.items():
-        pass
-        # check if model is in list and do the same as in get_app_list
+        if app_label == model._meta.app_label and model_name == model._meta.model_name:
+            has_module_perms = request.user.has_module_perms(app_label)
+
+            if has_module_perms:
+                perms = model_admin.get_model_perms(request)
+
+                if True in perms.values():
+                    info = (app_label, model._meta.model_name)
+                    model_dict = {
+                        'name': capfirst(model._meta.verbose_name_plural),
+                        'object_name': model._meta.object_name,
+                        'perms': perms,
+                    }
+                    if perms.get('change', False):
+                        try:
+                            model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin.site.name)
+                        except NoReverseMatch:
+                            pass
+                    if perms.get('add', False):
+                        try:
+                            model_dict['add_url'] = reverse('admin:%s_%s_add' % info, current_app=admin.site.name)
+                        except NoReverseMatch:
+                            pass
+                    return model_dict
+            return None
 
 
 @register.assignment_tag(takes_context=True)
