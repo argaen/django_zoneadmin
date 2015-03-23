@@ -33,16 +33,16 @@
                     <a data-toggle="popover" data-placement="bottom" data-trigger="click" data-content="{{ field.field.help_text }}"><i class="fa fa-question-circle"></i></a>
                   {% endif %}
                 </label>
-                {% if field.is_readonly %}
-                  <p>{{ field.contents }}</p>
-                {% else %}
-                  <div class="col-sm-10">
+                <div class="col-sm-10">
+                  {% if field.is_readonly %}
+                    <input class="form-control" type="text" readonly value={{ field.contents }}></input>
+                  {% else %}
                     {% custom_widget field.field %}
                     {% for e in field.field.errors %}
                       <span>{{ e }}</span>
                     {% endfor %}
-                  </div>
-                {% endif %}
+                  {% endif %}
+                </div>
               {% endif %}
 
             </div>

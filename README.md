@@ -1,5 +1,7 @@
 # Django Zone Admin
-Alternative admin interface for Django using Bootstrap.
+Alternative admin interfaces for Django admin.
+
+Currently there are two different themes. One which is the `default` that is a rewrite of original Django admin templates but giving it a Bootstrap look. Second, called `bootstrap_dashboard` is an implementation of the admin by using the [bootstrap dashboard example](http://getbootstrap.com/examples/dashboard/), the content part of this theme is the same as the `default` theme.
 
 ## Installation
 
@@ -9,6 +11,12 @@ After that, (if you are in `DEBUG=False` mode) do a `python manage.py collectsta
 
 You will also need to add the following line into your `TEMPLATE_CONTEXT_PROCESSORS` defined in your **settings.py** file: `django.core.context_processors.request`.
 
+### Choosing a theme
+
+The theme to be used is set according to the value of `ZONEADMIN_THEME` variable in your **settings.py** file. By default it uses the (guess what) `default` theme. Current themes are:
+
+    - 'default'
+    - 'bootstrap_dashboard'
 
 
 
