@@ -2,7 +2,7 @@ from django import template
 from django.conf import settings
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.urlresolvers import reverse, NoReverseMatch
-from django.forms import ModelChoiceField, DateField, ModelMultipleChoiceField, BooleanField, ImageField, FileField
+from django import forms
 from django.template.loader import get_template
 from django.template import Context
 from django.forms.fields import TimeField, SplitDateTimeField
@@ -37,24 +37,24 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, SplitDateTimeField):
                 return self.render_date_time_widgets(actual_field)
 
-            if isinstance(actual_field.field, ModelMultipleChoiceField):
+            if isinstance(actual_field.field, forms.ModelMultipleChoiceField):
                 return self.render_model_multiple_choice_widgets(actual_field)
 
-            if isinstance(actual_field.field, ModelChoiceField):
+            if isinstance(actual_field.field, forms.ModelChoiceField):
                 return self.render_model_choice_widgets(actual_field)
 
-            if isinstance(actual_field.field, DateField):
+            if isinstance(actual_field.field, forms.DateField):
                 return self.render_date_widgets(actual_field)
 
             if isinstance(actual_field.field, TimeField):
                 return self.render_time_widgets(actual_field)
 
-            if isinstance(actual_field.field, BooleanField) and not actual_field.is_hidden:
+            if isinstance(actual_field.field, forms.BooleanField) and not actual_field.is_hidden:
                 return self.render_checkbox_widgets(actual_field)
 
-            if isinstance(actual_field.field, ImageField):
+            if isinstance(actual_field.field, forms.ImageField):
                 return self.render_file_widgets(actual_field, image=True)
-            elif isinstance(actual_field.field, FileField):
+            elif isinstance(actual_field.field, forms.FileField):
                 return self.render_file_widgets(actual_field)
 
             if hasattr(actual_field.field.widget, 'widgets'):
@@ -135,11 +135,13 @@ class BootstrapWidgetNode(template.Node):
             return field.as_widget()
         if hasattr(field.field.widget, 'can_add_related'):
             can_add_related = field.field.widget.can_add_related
-        related_url = None
+        add_url = None
         if can_add_related:
             rel_to = field.field.widget.rel.to
             info = (rel_to._meta.app_label, rel_to._meta.object_name.lower())
-            related_url = reverse('admin:%s_%s_add' % info, current_app=field.field.widget.admin_site.name)
+            add_url = reverse('admin:%s_%s_add' % info, current_app=field.field.widget.admin_site.name)
+        if field.value():
+            edit_url = reverse('admin:%s_%s_changelist' % info, current_app=field.field.widget.admin_site.name)
         widget.attrs['class'] = 'form-control'
         widget.attrs['id'] = 'id_{}'.format(field.name)
         if field.field.required and not self.is_inlines:
@@ -150,8 +152,12 @@ class BootstrapWidgetNode(template.Node):
                 'id': field.auto_id,
                 'name': field.html_name,
             }),
-            'related_url': related_url,
-            'name': 'add_id_{}'.format(field.name)
+            'value': field.value(),
+            'id': field.auto_id,
+            'add_url': add_url,
+            'edit_url': edit_url,
+            'add_name': 'add_id_{}'.format(field.name),
+            'edit_name': 'edit_id_{}'.format(field.name)
         }))
         return html_output
 
