@@ -34,7 +34,17 @@
         </div>
 
         <div class="panel-body">
-          {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+          {% if inline_admin_form.form.non_field_errors %}
+            <tr><td>
+              <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {% for e in inline_admin_form.form.non_field_errors %}
+                  <p>{{e}}</p>
+                {% endfor %}
+              </div>
+            </td></tr>
+          {% endif %}
+
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" %}
           {% endfor %}
