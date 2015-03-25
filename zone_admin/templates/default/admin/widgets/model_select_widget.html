@@ -1,14 +1,18 @@
 <div class="multi-select-wrapper">
-  hihi
-  {% if related_url %}
-    {{ model_select_widget }}
-    <a href="{{ add_url }}" class="add-another" id="{{ name }}" onclick="return showAddAnotherPopup(this);">
+  {{ model_select_widget }}
+  {% if add_url %}
+    <a href="{{ add_url }}" class="add-another" id="{{ add_name }}" onclick="return showAddAnotherPopup(this);">
       <i class="fa fa-plus"></i>
     </a>
-    <a href="{{ edit_url }}" class="add-another" id="{{ name }}" onclick="return showAddAnotherPopup(this);">
+  {% endif %}
+  {% if edit_url %}
+  <a href="{{ edit_url }}{{ value }}" class="add-another" id="{{ edit_name }}" onclick="return showAddAnotherPopup(this);">
       <i class="fa fa-edit"></i>
     </a>
-  {% else %}
-    {{ model_select_widget }}
   {% endif %}
 </div>
+<script>
+  $("#{{id}}").change(function () {
+      $("#{{edit_name}}").attr("href", "{{edit_url}}" + $( "#{{id}} option:selected" ).val());
+  });
+</script>

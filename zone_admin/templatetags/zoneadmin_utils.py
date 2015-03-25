@@ -135,10 +135,10 @@ class BootstrapWidgetNode(template.Node):
             return field.as_widget()
         if hasattr(field.field.widget, 'can_add_related'):
             can_add_related = field.field.widget.can_add_related
-        add_url = None
+        add_url = edit_url = None
+        rel_to = field.field.widget.rel.to
+        info = (rel_to._meta.app_label, rel_to._meta.object_name.lower())
         if can_add_related:
-            rel_to = field.field.widget.rel.to
-            info = (rel_to._meta.app_label, rel_to._meta.object_name.lower())
             add_url = reverse('admin:%s_%s_add' % info, current_app=field.field.widget.admin_site.name)
         if field.value():
             edit_url = reverse('admin:%s_%s_changelist' % info, current_app=field.field.widget.admin_site.name)
@@ -156,8 +156,8 @@ class BootstrapWidgetNode(template.Node):
             'id': field.auto_id,
             'add_url': add_url,
             'edit_url': edit_url,
-            'add_name': 'add_id_{}'.format(field.name),
-            'edit_name': 'edit_id_{}'.format(field.name)
+            'add_name': 'add_id_{}'.format(field.html_name),
+            'edit_name': 'edit_id_{}'.format(field.html_name)
         }))
         return html_output
 

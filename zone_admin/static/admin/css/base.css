@@ -140,6 +140,11 @@ textarea.form-control {
   width: 100%;
 }
 
+.form-control {
+  width: auto;
+  display: inline;
+}
+
 @media screen and (max-width: 767px) {
   .dismiss {
     display: none !important;
