@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles i18n %}
 <input id="{{id}}" type="file" name="{{name}}" accept="image/*" class="file" {% if image %}accept="image/*"{% endif %} data-show-upload="false" data-show-preview="false">
 <script>
   $(document).ready(function () {
@@ -6,12 +6,12 @@
       mainClass: "col-md-6",
       {% if image %}
         previewFileType: "image",
-        browseLabel: "  Pick Image",
+        browseLabel: "  {% trans 'Pick Image' %}",
         browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
       {% endif %}
       {% if value %}
         overwriteInitial: true,
-        initialCaption: "&lt;a target=_blank href='{{media}}{{value}}'&gt;{{media}}{{value}}&lt;/a&gt;",
+        initialCaption: "&lt;a target=_blank title='{{value}}' href='{{media}}{{value}}'&gt;{{media}}{{value}}&lt;/a&gt;",
         initialPreview: [
           "<img src='{{media}}{{value}}'>",
         ],
@@ -24,7 +24,7 @@
             "   <div class=\'input-group-btn\'>\n" +
                 {% if value and not required %}
               "<span class='button-checkbox'>\n" +
-                '<button type="button" title="Clear selected files" style="border-radius: 0;" class="btn btn-default">Remove</button>\n' +
+                '<button type="button" title={% trans "Clear selected files" %} style="border-radius: 0;" class="btn btn-default">{% trans "Remove" %}</button>\n' +
     "            <input id='{{name}}-clear_id' name='{{name}}-clear' type='checkbox' class='hidden' />\n" +
             "        </span>\n" +
           {% endif %}
@@ -35,5 +35,6 @@
       },
 
     });
+    console.log("Added");
   });
 </script>

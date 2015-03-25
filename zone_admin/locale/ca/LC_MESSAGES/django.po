@@ -1,0 +1,586 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-24 22:25+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/bootstrap_dashboard/admin/actions.html:13
+#: templates/default/admin/actions.html:13
+msgid "Run the selected action"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/actions.html:13
+#: templates/default/admin/actions.html:13
+msgid "Go"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/actions.html:21
+#: templates/default/admin/actions.html:21
+msgid "Click here to select the objects across all pages"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/actions.html:21
+#: templates/default/admin/actions.html:21
+#, python-format
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/actions.html:23
+#: templates/default/admin/actions.html:23
+msgid "Clear selection"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/add_form.html:6
+#: templates/default/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/add_form.html:8
+#: templates/default/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:16
+#: templates/bootstrap_dashboard/admin/change_form.html:40
+#: templates/bootstrap_dashboard/admin/change_list.html:36
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:8
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:8
+#: templates/bootstrap_dashboard/admin/invalid_setup.html:6
+#: templates/bootstrap_dashboard/admin/object_history.html:6
+#: templates/bootstrap_dashboard/registration/logged_out.html:4
+#: templates/bootstrap_dashboard/registration/password_change_done.html:6
+#: templates/bootstrap_dashboard/registration/password_change_form.html:12
+#: templates/bootstrap_dashboard/registration/password_reset_complete.html:6
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:6
+#: templates/bootstrap_dashboard/registration/password_reset_done.html:6
+#: templates/bootstrap_dashboard/registration/password_reset_form.html:6
+#: templates/default/admin/auth/user/change_password.html:16
+#: templates/default/admin/base.html:70
+#: templates/default/admin/change_form.html:40
+#: templates/default/admin/change_list.html:36
+#: templates/default/admin/delete_confirmation.html:8
+#: templates/default/admin/delete_selected_confirmation.html:8
+#: templates/default/admin/invalid_setup.html:6
+#: templates/default/admin/object_history.html:6
+#: templates/default/registration/logged_out.html:4
+#: templates/default/registration/password_change_done.html:6
+#: templates/default/registration/password_change_form.html:12
+#: templates/default/registration/password_reset_complete.html:6
+#: templates/default/registration/password_reset_confirm.html:6
+#: templates/default/registration/password_reset_done.html:6
+#: templates/default/registration/password_reset_form.html:6
+msgid "Home"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:20
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:61
+#: templates/bootstrap_dashboard/registration/password_change_done.html:3
+#: templates/bootstrap_dashboard/registration/password_change_form.html:8
+#: templates/default/admin/auth/user/change_password.html:20
+#: templates/default/admin/auth/user/change_password.html:61
+#: templates/default/admin/base.html:50
+#: templates/default/registration/password_change_done.html:3
+#: templates/default/registration/password_change_form.html:8
+msgid "Change password"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:32
+#: templates/bootstrap_dashboard/admin/change_form.html:62
+#: templates/bootstrap_dashboard/admin/change_list.html:68
+#: templates/bootstrap_dashboard/admin/login.html:21
+#: templates/bootstrap_dashboard/registration/password_change_form.html:26
+#: templates/default/admin/auth/user/change_password.html:32
+#: templates/default/admin/change_form.html:62
+#: templates/default/admin/change_list.html:68
+#: templates/default/admin/login.html:21
+#: templates/default/registration/password_change_form.html:26
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:32
+#: templates/bootstrap_dashboard/admin/change_form.html:62
+#: templates/bootstrap_dashboard/admin/change_list.html:68
+#: templates/bootstrap_dashboard/admin/login.html:21
+#: templates/bootstrap_dashboard/registration/password_change_form.html:26
+#: templates/default/admin/auth/user/change_password.html:32
+#: templates/default/admin/change_form.html:62
+#: templates/default/admin/change_list.html:68
+#: templates/default/admin/login.html:21
+#: templates/default/registration/password_change_form.html:26
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:36
+#: templates/default/admin/auth/user/change_password.html:36
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:42
+#: templates/default/admin/auth/user/change_password.html:42
+msgid "Password"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:50
+#: templates/bootstrap_dashboard/registration/password_change_form.html:49
+#: templates/default/admin/auth/user/change_password.html:50
+#: templates/default/registration/password_change_form.html:49
+msgid "Password (again)"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/auth/user/change_password.html:51
+#: templates/default/admin/auth/user/change_password.html:51
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/base.html:51
+msgid "Dashboard"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/base.html:82
+#: templates/bootstrap_dashboard/admin/change_form.html:43
+#: templates/default/admin/change_form.html:43
+#: templates/default/admin/index.html:30
+msgid "Add"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/base.html:85
+#: templates/default/admin/index.html:34
+msgid "Change"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/base_site.html:3
+#: templates/default/admin/base_site.html:3
+msgid "Django site admin"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/base_site.html:6
+#: templates/default/admin/base_site.html:6
+msgid "Django administration"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_form.html:51
+#: templates/bootstrap_dashboard/admin/edit_inline/stacked.html:23
+#: templates/bootstrap_dashboard/admin/edit_inline/tabular.html:30
+#: templates/bootstrap_dashboard/admin/submit_line.html:15
+#: templates/default/admin/change_form.html:51
+#: templates/default/admin/edit_inline/stacked.html:23
+#: templates/default/admin/edit_inline/tabular.html:30
+#: templates/default/admin/submit_line.html:15
+msgid "View on site"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_list.html:57
+#: templates/default/admin/change_list.html:57
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_list.html:99
+#: templates/default/admin/change_list.html:99
+msgid "Filter"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_list_results.html:21
+#: templates/default/admin/change_list_results.html:21
+msgid "Remove from sorting"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_list_results.html:22
+#: templates/default/admin/change_list_results.html:22
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/change_list_results.html:23
+#: templates/default/admin/change_list_results.html:23
+msgid "Toggle sorting"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:12
+#: templates/bootstrap_dashboard/admin/submit_line.html:9
+#: templates/default/admin/delete_confirmation.html:12
+#: templates/default/admin/submit_line.html:9
+msgid "Delete"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:22
+#: templates/default/admin/delete_confirmation.html:22
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:30
+#: templates/default/admin/delete_confirmation.html:30
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:40
+#: templates/default/admin/delete_confirmation.html:40
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_confirmation.html:45
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:45
+#: templates/default/admin/delete_confirmation.html:45
+#: templates/default/admin/delete_selected_confirmation.html:45
+msgid "Yes, I'm sure"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:11
+#: templates/default/admin/delete_selected_confirmation.html:11
+msgid "Delete multiple objects"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:18
+#: templates/default/admin/delete_selected_confirmation.html:18
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:26
+#: templates/default/admin/delete_selected_confirmation.html:26
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/delete_selected_confirmation.html:34
+#: templates/default/admin/delete_selected_confirmation.html:34
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/edit_inline/stacked.html:56
+#: templates/bootstrap_dashboard/admin/edit_inline/tabular.html:78
+#: templates/default/admin/edit_inline/stacked.html:56
+#: templates/default/admin/edit_inline/tabular.html:78
+msgid "Remove"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/edit_inline/stacked.html:57
+#: templates/bootstrap_dashboard/admin/edit_inline/tabular.html:77
+#: templates/default/admin/edit_inline/stacked.html:57
+#: templates/default/admin/edit_inline/tabular.html:77
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/edit_inline/tabular.html:18
+#: templates/default/admin/edit_inline/tabular.html:18
+msgid "Delete?"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/filter.html:2
+#: templates/default/admin/filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/invalid_setup.html:12
+#: templates/default/admin/invalid_setup.html:12
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/login.html:51
+#: templates/default/admin/login.html:51
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/login.html:55
+#: templates/bootstrap_dashboard/registration/password_reset_complete.html:18
+#: templates/default/admin/login.html:55
+#: templates/default/registration/password_reset_complete.html:18
+msgid "Log in"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/object_history.html:10
+#: templates/bootstrap_dashboard/admin/submit_line.html:14
+#: templates/default/admin/object_history.html:10
+#: templates/default/admin/submit_line.html:14
+msgid "History"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/object_history.html:22
+#: templates/default/admin/object_history.html:22
+msgid "Date/time"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/object_history.html:23
+#: templates/default/admin/object_history.html:23
+msgid "User"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/object_history.html:24
+#: templates/default/admin/object_history.html:24
+msgid "Action"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/object_history.html:38
+#: templates/default/admin/object_history.html:38
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/search_form.html:14
+#: templates/default/admin/search_form.html:14
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/bootstrap_dashboard/admin/search_form.html:14
+#: templates/default/admin/search_form.html:14
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/submit_line.html:21
+#: templates/default/admin/submit_line.html:21
+msgid "Save"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/submit_line.html:22
+#: templates/default/admin/submit_line.html:22
+msgid "Save as new"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/submit_line.html:23
+#: templates/default/admin/submit_line.html:23
+msgid "Save and add another"
+msgstr ""
+
+#: templates/bootstrap_dashboard/admin/submit_line.html:24
+#: templates/default/admin/submit_line.html:24
+msgid "Save and continue editing"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/logged_out.html:8
+#: templates/default/registration/logged_out.html:8
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/logged_out.html:10
+#: templates/default/registration/logged_out.html:10
+msgid "Log in again"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_done.html:3
+#: templates/bootstrap_dashboard/registration/password_change_form.html:8
+#: templates/default/admin/base.html:47
+#: templates/default/registration/password_change_done.html:3
+#: templates/default/registration/password_change_form.html:8
+msgid "Documentation"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_done.html:3
+#: templates/bootstrap_dashboard/registration/password_change_form.html:8
+#: templates/default/admin/base.html:52
+#: templates/default/registration/password_change_done.html:3
+#: templates/default/registration/password_change_form.html:8
+msgid "Log out"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_done.html:7
+#: templates/bootstrap_dashboard/registration/password_change_form.html:13
+#: templates/default/registration/password_change_done.html:7
+#: templates/default/registration/password_change_form.html:13
+msgid "Password change"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_done.html:14
+#: templates/default/registration/password_change_done.html:14
+msgid "Your password was changed."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_form.html:30
+#: templates/default/registration/password_change_form.html:30
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_form.html:35
+#: templates/default/registration/password_change_form.html:35
+msgid "Old password"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_form.html:42
+#: templates/default/registration/password_change_form.html:42
+msgid "New password"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_change_form.html:58
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:24
+#: templates/default/registration/password_change_form.html:58
+#: templates/default/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_complete.html:7
+#: templates/bootstrap_dashboard/registration/password_reset_done.html:7
+#: templates/bootstrap_dashboard/registration/password_reset_form.html:7
+#: templates/default/registration/password_reset_complete.html:7
+#: templates/default/registration/password_reset_done.html:7
+#: templates/default/registration/password_reset_form.html:7
+msgid "Password reset"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_complete.html:16
+#: templates/default/registration/password_reset_complete.html:16
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:7
+#: templates/default/registration/password_reset_confirm.html:7
+msgid "Password reset confirmation"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:17
+#: templates/default/registration/password_reset_confirm.html:17
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:21
+#: templates/default/registration/password_reset_confirm.html:21
+msgid "New password:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:23
+#: templates/default/registration/password_reset_confirm.html:23
+msgid "Confirm password:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_confirm.html:29
+#: templates/default/registration/password_reset_confirm.html:29
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_done.html:15
+#: templates/default/registration/password_reset_done.html:15
+msgid ""
+"We've emailed you instructions for setting your password. You should be "
+"receiving them shortly."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_done.html:17
+#: templates/default/registration/password_reset_done.html:17
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_email.html:2
+#: templates/default/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_email.html:4
+#: templates/default/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_email.html:8
+#: templates/default/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_email.html:10
+#: templates/default/registration/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_email.html:12
+#: templates/default/registration/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_form.html:15
+#: templates/default/registration/password_reset_form.html:15
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_form.html:19
+#: templates/default/registration/password_reset_form.html:19
+msgid "Email address:"
+msgstr ""
+
+#: templates/bootstrap_dashboard/registration/password_reset_form.html:19
+#: templates/default/registration/password_reset_form.html:19
+msgid "Reset my password"
+msgstr ""
+
+#: templates/default/admin/base.html:41
+msgid "Welcome,"
+msgstr ""
+
+#: templates/default/admin/index.html:17
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: templates/default/admin/index.html:43
+msgid "You don't have permission to edit anything."
+msgstr ""
+
+#: templates/default/admin/index.html:54
+msgid "My Actions"
+msgstr ""
+
+#: templates/default/admin/index.html:62
+msgid "None available"
+msgstr ""
+
+#: templates/default/admin/index.html:82
+msgid "Unknown content"
+msgstr ""
+
+#: templates/default/admin/widgets/file_widget.html:9
+msgid "Pick Image"
+msgstr "Escolleix Imatge"

@@ -49,11 +49,6 @@ a:hover {
   padding-bottom: 10px;
 }
 
-.form-control {
-  width: auto;
-  display: inline;
-}
-
 .empty-form {
   display: none;
 }
@@ -143,6 +138,11 @@ label.required, th.required {
 
 textarea.form-control {
   width: 100%;
+}
+
+.form-control {
+  width: auto;
+  display: inline;
 }
 
 @media screen and (max-width: 767px) {
