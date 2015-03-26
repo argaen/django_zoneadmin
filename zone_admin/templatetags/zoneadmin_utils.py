@@ -303,3 +303,15 @@ def get_app_list(context):
 @register.filter
 def to_app_model_name(obj):
     return obj._meta.app_label + '_' + obj._meta.model_name
+
+
+@register.simple_tag(takes_context=True)
+def navactive(context, urls):
+    request = context['request']
+    for url in urls.split():
+        print reverse(url)
+        print request.path
+
+        if request.path.startswith(reverse(url)):
+            return "active"
+    return ""
