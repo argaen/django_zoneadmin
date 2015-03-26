@@ -40,8 +40,8 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, forms.ModelMultipleChoiceField):
                 return self.render_model_multiple_choice_widgets(actual_field)
 
-            if isinstance(actual_field.field, forms.ModelChoiceField):
-                return self.render_model_choice_widgets(actual_field)
+            # if isinstance(actual_field.field, forms.ModelChoiceField):
+            #     return self.render_model_choice_widgets(actual_field)
 
             if isinstance(actual_field.field, forms.DateField):
                 return self.render_date_widgets(actual_field)
