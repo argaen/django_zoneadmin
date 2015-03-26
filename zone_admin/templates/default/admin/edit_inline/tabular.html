@@ -15,7 +15,7 @@
           {% endfor %}
         </div>
       {% endif %}
-      <table class="table table-hover">
+      <table class="table">
         <thead><tr>
          {% for field in inline_admin_formset.fields %}
            {% if not field.widget.is_hidden %}
