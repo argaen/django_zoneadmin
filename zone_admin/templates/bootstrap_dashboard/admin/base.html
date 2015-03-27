@@ -32,11 +32,10 @@
     {% endblock %}
 
     {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav id="main-navbar" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -65,7 +64,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid wrapper" style="max-width:{% block container-width %}100%{% endblock %};">
+    <div class="container-fluid wrapper">
       <div class="row row-wrapper">
 
         {% block menu %}
