@@ -49,11 +49,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           {% if user.is_authenticated %}
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="{% url 'admin:index' %}">{% trans "Dashboard" %}</a></li>
               {% with user|to_app_model_name as user_app_model %}
-                <li><a href="{% url 'admin:'|add:user_app_model|add:'_change' user.pk %}">Profile</a></li>
+                <li><a href="{% url 'admin:'|add:user_app_model|add:'_change' user.pk %}">{{user}}</a></li>
               {% endwith %}
-              <li><a href="{% url 'admin:logout' %}">Logout</a></li>
+              <li><a href="{% url 'admin:index' %}">{% trans "Dashboard" %}</a></li>
+              <li><a href="{% url 'admin:logout' %}">{% trans "Logout" %}</a></li>
               <!-- <li><a href="#">Help</a></li> -->
             </ul>
           {% endif %}

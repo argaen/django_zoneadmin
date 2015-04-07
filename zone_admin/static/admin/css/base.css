@@ -235,3 +235,7 @@ td>input.form-control {
   background-color: inherit;
   border-color: #ccc;
 }
+
+.bootstrap-tagsinput .label.tag {
+  font-size: 95%;
+}
