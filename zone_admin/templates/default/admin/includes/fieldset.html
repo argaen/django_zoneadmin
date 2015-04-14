@@ -35,7 +35,7 @@
                 </label>
                 <div class="col-sm-10">
                   {% if field.is_readonly %}
-                    <input class="form-control" type="text" readonly value={{ field.contents }}></input>
+                    <input class="form-control" type="text" readonly value="{{ field.contents }}"></input>
                   {% else %}
                     {% custom_widget field.field %}
                     {% for e in field.field.errors %}
