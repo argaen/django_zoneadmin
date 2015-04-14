@@ -239,3 +239,14 @@ td>input.form-control {
 .bootstrap-tagsinput .label.tag {
   font-size: 95%;
 }
+
+.flex-login-center {
+  max-width: 400px;
+
+  min-height: 100%;
+  min-height: calc(100vh - 90px); /* header + margin header + col padding */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

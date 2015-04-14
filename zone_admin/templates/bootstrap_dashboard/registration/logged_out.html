@@ -5,8 +5,16 @@
 
 {% block content %}
 
-<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
+<div class="container flex-login-center" style="text-align:center;">
+  <div class="row">
+    <div class="col-md-12">
+      <p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
+    </div>
 
-<p><a class="btn btn-default" href="{% url 'admin:index' %}">{% trans 'Log in again' %}</a></p>
+    <div class="col-md-12">
+      <p><a class="btn btn-default" href="{% url 'admin:index' %}">{% trans 'Log in again' %}</a></p>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
