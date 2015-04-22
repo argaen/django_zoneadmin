@@ -45,11 +45,24 @@
   {% endblock %}
 {% endif %}
 
+{% block mainnav %}
+  {% if not is_popup %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block menu %}
+  {% if not is_popup %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
 {% block content %}<div id="content-main">
+  {{is_popup}}
   <div class="row">
-  {% block content_title %}{% if title %}<h3 class="page-header" style="display: inline-block;">{{ title }}</h3>{% endif %}{% endblock %}
-  {% if has_absolute_url %}<div class="pull-right"><a href="{{ absolute_url }}" class="btn btn-default"><i class="fa fa-eye"></i><span class="dismiss"> {% trans "View on site" %}</span></a></div>{% endif%}
-</div>
+    {% block content_title %}{% if title %}<h3 class="page-header" style="display: inline-block;">{{ title }}</h3>{% endif %}{% endblock %}
+    {% if has_absolute_url %}<div class="pull-right"><a href="{{ absolute_url }}" class="btn btn-default"><i class="fa fa-eye"></i><span class="dismiss"> {% trans "View on site" %}</span></a></div>{% endif%}
+  </div>
 
   <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
     <div>
