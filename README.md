@@ -109,7 +109,7 @@ This menu is defined in the `base.html` template. It automatically loads the reg
 
 The default menu contains the following:
 
-```jinja2
+```Django
 {% load zoneadmin_utils %} # Needed for the get_app_list template tag
 {% if user.is_authenticated %}
 <div id="mainmenu" class="col-sm-3 col-md-2 sidebar" style="padding:0px;">
@@ -144,8 +144,8 @@ One important thing to take into account is that, if you build a custom menu dis
 
 This package, provides a custom templatetag to generate more specific menus checking model permissions. Let's say you only want to have a menu with the **User** model on it. This can be achieved with:
 
-```jinja2
-{% get_model 'risk' 'riskuser' as model %}
+```Django
+{% get_model 'auth' 'user' as model %}
 <div class="list-group-item">
   <a href="{{ model.admin_url }}"><i class="fa fa-user"></i> {{ model.name }}</a>
   <div class="pull-right">
@@ -177,4 +177,4 @@ If you need to change the styles of a theme, write them in `static/admin/styles.
 
 ### Overriding bootstrap styles
 
-All the themes use bootstrap (default style, not primary) for css styling. If you want to override the default values, you can use the [bootstrap customization page](http://getbootstrap.com/customize/). Once generated, place the file in `static/admin/vendor/bootstrap/bootstrap.min.css and the boostrap style will be overriden.
+All the themes use bootstrap (default style, not primary) for css styling. If you want to override the default values, you can use the [bootstrap customization page](http://getbootstrap.com/customize/). Once generated, place the file in `static/admin/vendor/bootstrap/bootstrap.min.css` and the boostrap style will be overriden.
