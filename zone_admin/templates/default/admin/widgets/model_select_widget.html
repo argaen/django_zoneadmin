@@ -1,12 +1,12 @@
 <div class="multi-select-wrapper">
   {{ model_select_widget }}
   {% if add_url %}
-    <a href="{{ add_url }}" class="add-another" id="{{ add_name }}" onclick="return showAddAnotherPopup(this);">
+    <a href="{{ add_url }}?_popup=1" class="add-another" id="{{ add_name }}" onclick="return showAddAnotherPopup(this);">
       <i class="fa fa-plus"></i>
     </a>
   {% endif %}
   {% if edit_url %}
-  <a href="{{ edit_url }}{{ value }}" class="add-another" id="{{ edit_name }}" onclick="return showAddAnotherPopup(this);">
+  <a href="{{ edit_url }}{{ value }}?_popup=1" class="add-another" id="{{ edit_name }}" onclick="return showAddAnotherPopup(this);">
       <i class="fa fa-edit"></i>
     </a>
   {% endif %}
