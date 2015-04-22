@@ -174,3 +174,7 @@ If you need to create a new theme, this package may help you with it's templatet
 ### Overriding styles
 
 If you need to change the styles of a theme, write them in `static/admin/styles.css`. The file is automatically loaded in `base.html` template.
+
+### Overriding bootstrap styles
+
+All the themes use bootstrap (default style, not primary) for css styling. If you want to override the default values, you can use the [bootstrap customization page](http://getbootstrap.com/customize/). Once generated, place the file in `static/admin/vendor/bootstrap/bootstrap.min.css and the boostrap style will be overriden.
