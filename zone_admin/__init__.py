@@ -9,3 +9,5 @@ if hasattr(settings, 'ZONEADMIN_THEME'):
     settings.TEMPLATE_DIRS += ((path,) if os.path.isdir(path) else (default_path,))
 else:
     settings.TEMPLATE_DIRS += (default_path,)
+
+settings.TEMPLATE_CONTEXT_PROCESSORS += ("django.core.context_processors.request",)
