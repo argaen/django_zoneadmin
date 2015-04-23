@@ -24,12 +24,6 @@
   {{media}}
 {% endblock %}
 
-{% block extrastyle %}{{ block.super}}
-  <link rel="stylesheet" type="text/css" href="{% static "admin/vendor/bootstrap/bootstrap-fileinput.min.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "admin/vendor/bootstrap/bootstrap-tagsinput.css" %}"/>
-  <link rel="stylesheet" type="text/css" href={% static "admin/vendor/bootstrap/bootstrap-datetimepicker.min.css" %} />
-{% endblock %}
-
 {% block content-col %}12{% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}

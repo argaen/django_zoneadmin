@@ -19,6 +19,9 @@
               {% if field.is_checkbox %}
                 <label class="col-sm-2">
                   {{ field.field.label }}
+                  {% if field.field.help_text %}
+                    <a data-toggle="popover" data-placement="bottom" data-trigger="click" data-content="{{ field.field.help_text }}"><i class="fa fa-question-circle"></i></a>
+                  {% endif %}
                 </label>
                 <div class="col-sm-10">
                   {% custom_widget field.field %}
