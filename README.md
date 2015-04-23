@@ -5,7 +5,7 @@ Currently there are two different themes. One which is the `default` that is a r
 
 ## Installation
 
-Do a `pip install django_zoneadmin`. Once installed, open your **settings.py** file and place the 'zone\_admin' app **before** the `django.contrib.admin` app.
+Do a `pip install django_zoneadmin`. Once installed, open your **settings.py** file and place the 'zone_admin' app **before** the `django.contrib.admin` app.
 
 After that, (if you are in `DEBUG=False` mode) do a `python manage.py collectstatic` to get the _staticfiles_ and refresh the browser, you should now see that the styling of the admin interface has changed.
 
@@ -15,7 +15,7 @@ After that, (if you are in `DEBUG=False` mode) do a `python manage.py collectsta
 The theme to be used is set according to the value of `ZONEADMIN_THEME` variable in your **settings.py** file. By default it uses the (guess what) `default` theme. Current themes are:
 
     - 'default'
-    - 'bootstrap\_dashboard'
+    - 'bootstrap_dashboard'
 
 
 
@@ -138,7 +138,7 @@ The default menu contains the following:
 {% endif %}
 ```
 
-> IMPORTANT: Note that if you want your overriden menu to appear in any _subpage_, you should override the block in the `base\_site.html` template. If you override it in for example, your `index.html` template, the menu will only apply to templates extending that template (which may not be the desired behaviour).
+> IMPORTANT: Note that if you want your overriden menu to appear in any _subpage_, you should override the block in the `base_site.html` template. If you override it in for example, your `index.html` template, the menu will only apply to templates extending that template (which may not be the desired behaviour).
 
 One important thing to take into account is that, if you build a custom menu disabling some models/apps to be accessed, you are only hiding the urls to the user but **they can still be accessed!**. If you want to disable access to some models or apps, just change the permissions for the needed users/groups.
 
@@ -165,11 +165,11 @@ The index page is left blank on purpose in order to override it. To do so, creat
 
 ### Overriding other templates
 
-This package respects the template inheritance that works by default in Django so, if you want to override the `change\_form.html` template for a specific app, you can create the file under `app/templates/change\_form.html`.
+This package respects the template inheritance that works by default in Django so, if you want to override the `change_form.html` template for a specific app, you can create the file under `app/templates/change_form.html`.
 
 ### Creating a new theme
 
-If you need to create a new theme, this package may help you with it's templatetags and to show you how to do it with the templates. If you feel that the theme is good enough, consider a pull request to add it to the package itself. Themes are placed under `zone\_admin/templates/theme\_name`.
+If you need to create a new theme, this package may help you with it's templatetags and to show you how to do it with the templates. If you feel that the theme is good enough, consider a pull request to add it to the package itself. Themes are placed under `zone_admin/templates/theme_name`.
 
 ### Overriding styles
 
