@@ -97,6 +97,14 @@ class ContentAdmin(admin.ModelAdmin):
 
 ## Customization
 
+### Overriding templates
+
+This package respects the template inheritance that works by default in Django so, if you want to override the `change_form.html` template for a specific app, you can create the file under `app/templates/change_form.html`.
+
+If you want to override a template for the whole project, create a `templates/theme_name` under your project root. There, if you want to override the `base_site.html` template, you can do it in normal Django way: create the `admin/base_site.html` and write your code in it. After refreshing you should see the new changes.
+
+> As you may have noticed, you don't have to write the TEMPLATE_DIRS variable in your **settings.py** file because the package configures it automatically according to the theme being used. I.e. if you set to use the `default` theme, you can write your custom templates under `templates/default` directly.
+
 ### Block menu template (bootstrap_default theme)
 
 This menu is defined in the `base.html` template. It automatically loads the registered applications and models in the admin (according to the current user permissions). You can override it in any template that inherits from `base.html` by writting the following:
@@ -159,13 +167,10 @@ This package, provides a custom templatetag to generate more specific menus chec
 </div>
 ```
 
-### Overriding index page
+### Overriding index page (bootstrap_default theme)
 
 The index page is left blank on purpose in order to override it. To do so, create an `index.html` template and place there whatever you want. Basically, you will want to override the `content` block which is the one that controls what is shown in the content part (the part besides the menu sidebar).
 
-### Overriding other templates
-
-This package respects the template inheritance that works by default in Django so, if you want to override the `change_form.html` template for a specific app, you can create the file under `app/templates/change_form.html`.
 
 ### Creating a new theme
 
