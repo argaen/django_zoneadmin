@@ -179,7 +179,7 @@ class BootstrapWidgetNode(template.Node):
         rendered_output = rendered_output.replace('selectfilter', 'selectfilter form-control')
         html_output = output.render(Context({
             'model_select_widget': mark_safe(rendered_output),
-            'related_url': related_url,
+            'add_url': related_url,
             'name': 'add_id_{}'.format(field.html_name)
         }))
         return html_output
