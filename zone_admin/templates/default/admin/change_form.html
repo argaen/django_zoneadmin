@@ -19,6 +19,9 @@
           ],
           toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
       });
+      $( "input[type=text], input[type=url]" ).each(function( index ) {
+        $( this ).css("width", Math.max(200, $(this).val().toString().length*7));
+      });
     });
   </script>
   {{media}}
