@@ -10,7 +10,7 @@ class TinyMCEWidget(forms.Textarea):
             value = ''
         final_attrs = self.build_attrs(attrs)
         final_attrs['name'] = name
-        final_attrs['class'] = 'form-control tinymce'
+        final_attrs['class'] = final_attrs['class'] + ' tinymce'
 
         html = ['<textarea%s>%s</textarea>' % (flatatt(final_attrs), escape(value))]
         return '\n'.join(html)

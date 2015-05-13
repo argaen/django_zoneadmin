@@ -12,8 +12,6 @@ from django.utils.text import capfirst
 from django.apps import apps
 
 
-
-
 register = template.Library()
 
 
