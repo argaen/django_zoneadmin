@@ -68,28 +68,36 @@
 
         {% block menu %}
           {% if user.is_authenticated and not is_popup%}
-            <div id="mainmenu" class="col-sm-3 col-md-2 sidebar" style="padding:0px;">
-              <div class="list-group">
+            <div id="mainmenu" class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
                 {% get_app_list as app_list %}
                 {% for app in app_list %}
-                  <a href="#{{ app.name | slugify }}" class="list-group-item" data-toggle="collapse" data-parent="#mainmenu">{{ app.name }}</a>
-                  <div class="collapse" id="{{ app.name | slugify }}">
+                <li>
+                  <a data-parent="#mainmenu">{{ app.name }}</a>
+                  <div class="collapse in" id="{{ app.name | slugify }}">
                     {% for model in app.models %}
-                    <div class="col-md-offset-2 list-group-item sublist-group-item">
-                      <a href="{{ model.admin_url }}">{{ model.name }}</a>
-                      <div class="pull-right">
-                        {% if model.add_url %}
-                        <span><a href="{{ model.add_url }}" title="{% trans 'Add' %}" class="model-action addlink"><i class="fa fa-plus"></i></a><span>
-                        {% endif %}
-                        {% if model.admin_url %}
-                          <span><a href="{{ model.admin_url }}" title="{% trans 'Change' %}" class="model-action changelink"><i class="fa fa-edit"></i></a><span>
-                        {% endif %}
-                      </div>
-                    </div>
+                    <ul>
+                      {% if model.add_url %}
+                      <li class="list-group-item sublist-group-item {% admin_navactive model.admin_url|add:' '|add:model.add_url %} ">
+                      {% else %}
+                      <li class="list-group-item sublist-group-item {% admin_navactive model.admin_url %} ">
+                      {% endif %}
+                        <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                        <div class="pull-right">
+                          {% if model.add_url %}
+                          <span><a href="{{ model.add_url }}" title="{% trans 'Add' %}" class="model-action addlink"><i class="fa fa-plus"></i></a><span>
+                          {% endif %}
+                          {% if model.admin_url %}
+                            <span><a href="{{ model.admin_url }}" title="{% trans 'Change' %}" class="model-action changelink"><i class="fa fa-edit"></i></a><span>
+                          {% endif %}
+                        </div>
+                      </li>
+                    </ul>
                     {% endfor %}
                   </div>
+                </li>
                 {% endfor %}
-              </div>
+              </ul>
             </div>
           {% endif %}
         {% endblock menu %}
