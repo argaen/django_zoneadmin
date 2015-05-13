@@ -5,12 +5,13 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 from django import forms
 from django.template.loader import get_template
 from django.template import Context
-from django.forms.fields import TimeField, SplitDateTimeField
 from django.utils.safestring import mark_safe
 from django.contrib import admin
 from django.utils import six
 from django.utils.text import capfirst
 from django.apps import apps
+
+
 
 
 register = template.Library()
@@ -34,7 +35,7 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, ReadOnlyPasswordHashField):
                 return self.render_readonly_widgets(actual_field)
 
-            if isinstance(actual_field.field, SplitDateTimeField):
+            if isinstance(actual_field.field, forms.SplitDateTimeField):
                 return self.render_date_time_widgets(actual_field)
 
             if isinstance(actual_field.field, forms.ModelMultipleChoiceField):
@@ -46,7 +47,7 @@ class BootstrapWidgetNode(template.Node):
             if isinstance(actual_field.field, forms.DateField):
                 return self.render_date_widgets(actual_field)
 
-            if isinstance(actual_field.field, TimeField):
+            if isinstance(actual_field.field, forms.TimeField):
                 return self.render_time_widgets(actual_field)
 
             if isinstance(actual_field.field, forms.BooleanField) and not actual_field.is_hidden:
@@ -56,6 +57,11 @@ class BootstrapWidgetNode(template.Node):
                 return self.render_file_widgets(actual_field, image=True)
             elif isinstance(actual_field.field, forms.FileField):
                 return self.render_file_widgets(actual_field)
+
+            if apps.is_installed('versatileimagefield'):
+                import versatileimagefield
+                if isinstance(actual_field.field, versatileimagefield.forms.SizedImageCenterpointClickDjangoAdminField):
+                    return self.render_file_widgets(actual_field)
 
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
