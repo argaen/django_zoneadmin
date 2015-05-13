@@ -313,7 +313,7 @@ def to_app_model_name(obj):
 def navactive(context, urls):
     request = context['request']
     for url in urls.split():
-        if request.path.startswith(reverse(url)):
+        if request.path == reverse(url):
             return "active"
     return ""
 
@@ -321,7 +321,6 @@ def navactive(context, urls):
 @register.simple_tag(takes_context=True)
 def admin_navactive(context, urls):
     request = context['request']
-    print urls
     for url in urls.split():
         if request.path.startswith(url):
             return "active"
