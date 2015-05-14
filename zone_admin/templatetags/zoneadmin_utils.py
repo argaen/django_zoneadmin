@@ -56,11 +56,6 @@ class BootstrapWidgetNode(template.Node):
             elif isinstance(actual_field.field, forms.FileField):
                 return self.render_file_widgets(actual_field)
 
-            if apps.is_installed('versatileimagefield'):
-                import versatileimagefield
-                if isinstance(actual_field.field, versatileimagefield.forms.SizedImageCenterpointClickDjangoAdminField):
-                    return self.render_file_widgets(actual_field)
-
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
 
