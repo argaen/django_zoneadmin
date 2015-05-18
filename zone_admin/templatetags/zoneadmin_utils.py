@@ -140,7 +140,10 @@ class BootstrapWidgetNode(template.Node):
         if can_add_related:
             add_url = reverse('admin:%s_%s_add' % info, current_app=field.field.widget.admin_site.name)
         if field.value():
-            edit_url = reverse('admin:%s_%s_changelist' % info, current_app=field.field.widget.admin_site.name)
+            try:
+                edit_url = reverse('admin:%s_%s_changelist' % info, current_app=field.field.widget.admin_site.name)
+            except NoReverseMatch:
+                edit_url = None
         widget.attrs['class'] = 'form-control'
         widget.attrs['id'] = 'id_{}'.format(field.name)
         if field.field.required and not self.is_inlines:
