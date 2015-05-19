@@ -1,0 +1,39 @@
+{% load staticfiles i18n %}
+<input id="{{id}}_0" type="file" name="{{name}}_0" accept="image/*" class="file" {% if image %}accept="image/*"{% endif %} data-show-upload="false" data-show-preview="false">
+<script>
+  $(document).ready(function () {
+    $("#{{id}}_0").fileinput({
+      mainClass: "col-md-6",
+      {% if image %}
+        previewFileType: "image",
+        browseLabel: "  {% trans 'Pick Image' %}",
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+      {% endif %}
+      {% if value %}
+        overwriteInitial: true,
+        initialCaption: "&lt;a target=_blank title='{{value}}' href='{{media}}{{value}}'&gt;{{media}}{{value}}&lt;/a&gt;",
+        initialPreview: [
+          "<img src='{{media}}{{value}}'>",
+        ],
+      {% endif %}
+      removeClass: "btn btn-default {{id}}_0",
+      layoutTemplates: {
+        main1: "{preview}\n" +
+            "<div class=\'input-group {class}\'>\n" +
+            "   {caption}\n" +
+            "   <div class=\'input-group-btn\'>\n" +
+                {% if value and not required %}
+              "<span class='button-checkbox'>\n" +
+                '<button type="button" title={% trans "Clear selected files" %} style="border-radius: 0;" class="btn btn-default">{% trans "Remove" %}</button>\n' +
+    "            <input id='{{name}}_0-clear_id' name='{{name}}_0-clear' type='checkbox' class='hidden' />\n" +
+            "        </span>\n" +
+          {% endif %}
+            "       {upload}\n" +
+            "       {browse}\n" +
+            "   </div>\n" +
+            "</div>"
+      },
+
+    });
+  });
+</script>
