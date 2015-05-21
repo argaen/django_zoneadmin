@@ -11,9 +11,6 @@ from django.utils import six
 from django.utils.text import capfirst
 from django.apps import apps
 
-from versatileimagefield.forms import SizedImageCenterpointClickDjangoAdminField
-
-
 register = template.Library()
 
 
@@ -58,8 +55,10 @@ class BootstrapWidgetNode(template.Node):
             elif isinstance(actual_field.field, forms.FileField):
                 return self.render_file_widgets(actual_field)
 
-            if isinstance(actual_field.field, SizedImageCenterpointClickDjangoAdminField):
-                return self.render_versatile_file_widgets(actual_field)
+            if apps.is_installed('versatileimagefield'):
+                from versatileimagefield.forms import SizedImageCenterpointClickDjangoAdminField
+                if isinstance(actual_field.field, SizedImageCenterpointClickDjangoAdminField):
+                    return self.render_versatile_file_widgets(actual_field)
 
             if hasattr(actual_field.field.widget, 'widgets'):
                 pass
