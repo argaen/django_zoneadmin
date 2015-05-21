@@ -1,9 +1,22 @@
-{% load i18n %}
+{% load i18n staticfiles %}
+<script src={% static "admin/vendor/bootstrap/bootstrap-select.js" %}></script>
+<script type="text/javascript">var go_from_select = function(opt) { window.location = window.location.pathname + opt };</script>
 <h4>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h4>
-<ul class="list-inline">
-  {% for choice in choices %}
-    <li style="margin-bottom:5px;">
-      <a class="btn btn-sm btn-default {% if choice.selected %} active{% endif %}" href="{{ choice.query_string|iriencode }}">{{ choice.display }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% if choices|slice:"4:" %}
+  <select class="selectpicker" style="width: 95%;" onchange="go_from_select(this.options[this.selectedIndex].value)">
+    {% for choice in choices %}
+      <option{% if choice.selected %} selected="selected"{% endif %}
+      value="{{ choice.query_string|iriencode }}">{{ choice.display }}</option>
+    {% endfor %}
+  </select>
+{% else %}
+
+  <ul class="list-inline">
+    {% for choice in choices %}
+      <li style="margin-bottom:5px;">
+        <a class="btn btn-sm btn-default {% if choice.selected %} active{% endif %}" href="{{ choice.query_string|iriencode }}">{{ choice.display }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endif %}
