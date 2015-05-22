@@ -1,6 +1,7 @@
 {% load i18n staticfiles %}
 <script src={% static "admin/vendor/bootstrap/bootstrap-select.js" %}></script>
 <script type="text/javascript">var go_from_select = function(opt) { window.location = window.location.pathname + opt };</script>
+<link rel="stylesheet" type="text/css" href={% static "admin/vendor/bootstrap/bootstrap-select.css" %}>
 <h4>{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h4>
 {% if choices|slice:"4:" %}
   <select class="selectpicker" style="width: 95%;" onchange="go_from_select(this.options[this.selectedIndex].value)">
