@@ -4,7 +4,7 @@ packages = ['Django']
 
 setup(
     name="django_zoneadmin",
-    version="0.3.5",
+    version="0.4.0",
     url="http://github.com/argaen/django_zoneadmin",
     description="Alternative django administration interface with bootstrap",
     author="argaen",
