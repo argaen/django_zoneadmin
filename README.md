@@ -72,27 +72,9 @@ class ContentAdmin(admin.ModelAdmin):
 ```
 
 
-### TinyMCE editor
+### Rick text editor
 
-If you want to have a textfield with the tinymce editor, do the following:
-
-```python
-from zone_admin.widgets import TinyMCEWidget
-
-class ContentForm(forms.ModelForm):
-
-    class Meta:
-        model = models.Content
-        widgets = {
-            'description': TinyMCEWidget(),
-        }
-        exclude = []
-
-class ContentAdmin(admin.ModelAdmin):
-    form = ContentForm
-```
-
-> Customization of the plugins is not posible yet and file upload needs integration local uploads.
+If you need a rich text editor. Just use the [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor) package
 
 
 ## Customization
