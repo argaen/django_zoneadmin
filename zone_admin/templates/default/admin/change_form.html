@@ -11,7 +11,7 @@
       });
 
       $( "input[type=text], input[type=url]" ).each(function( index ) {
-        $( this ).css("width", Math.max(200, $(this).val().toString().length*7));
+        $( this ).css("width", Math.min(500, Math.max(200, $(this).val().toString().length*7)));
       });
     });
   </script>

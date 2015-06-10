@@ -24,22 +24,22 @@ class ZoneAdminConfig(AppConfig):
             project_theme_path = os.path.join(project_dir, 'templates/', settings.ZONEADMIN_THEME)
 
             if settings.ZONEADMIN_THEME == 'bootstrap_dashboard':
-                template_dirs += [theme_path, default_path] if os.path.isdir(theme_path) else [default_path,]
+                template_dirs += [theme_path, default_path] if os.path.isdir(theme_path) else [default_path]
             else:
-                template_dirs += [theme_path,] if os.path.isdir(theme_path) else [default_path,]
+                template_dirs += [theme_path] if os.path.isdir(theme_path) else [default_path]
         else:
-            template_dirs += [default_path,]
+            template_dirs += [default_path]
 
         if os.path.isdir(project_default_path):
             template_dirs += [project_default_path] + template_dirs
         if project_theme_path is not None and os.path.isdir(project_theme_path):
             template_dirs += [project_theme_path] + template_dirs
 
-        if hasattr(settings, "TEMPLATES"):
+        if hasattr(settings, "TEMPLATES") and settings.TEMPLATES:
             for backend in settings.TEMPLATES:
-                backend["DIRS"] = template_dirs + backend["DIRS"]
+                backend["DIRS"] = backend["DIRS"] + template_dirs
         else:
-            settings.TEMPLATE_DIRS = [template_dirs] + settings.TEMPLATE_DIRS
+            settings.TEMPLATE_DIRS = list(settings.TEMPLATE_DIRS) + template_dirs
 
         # Add request to TEMPLATE_CONTEXT_PROCESSORS
         settings.TEMPLATE_CONTEXT_PROCESSORS += ("django.core.context_processors.request",)
